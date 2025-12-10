@@ -10,10 +10,11 @@ function QABox({ context }) {
     if (!question) return;
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5001/ask", {
-        question,
-        snippet: context,
-      });
+      const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5001";
+      const res = await axios.post(`${API_BASE}/ask`, {
+      question,
+      snippet: context,
+    });
       setAnswer(res.data.answer);
     } catch {
       alert("Failed to get answer");

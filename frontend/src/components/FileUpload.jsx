@@ -13,7 +13,9 @@ function FileUpload({ onResult }) {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("http://localhost:5001/upload", formData);
+      // const res = await axios.post("http://localhost:5001/upload", formData);
+      const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5001";
+      const res = await axios.post(`${API_BASE}/upload`, formData);
       onResult(res.data);
     } catch (err) {
       console.error(err);
