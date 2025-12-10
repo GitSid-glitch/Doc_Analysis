@@ -6,7 +6,7 @@ function ChartDisplay({ charts }) {
         {charts.map((c, i) => (
           <img
             key={i}
-            src={`http://localhost:5000/static/${c.split('/').pop()}`}
+            src={`http://localhost:5001/static/${c.split('/').pop()}`}
             alt={`chart${i + 1}`}
             style={{ maxWidth: "250px", margin: "10px" }}
           />

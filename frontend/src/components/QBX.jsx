@@ -10,7 +10,7 @@ function QABox({ context }) {
     if (!question) return;
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/ask", {
+      const res = await axios.post("http://localhost:5001/ask", {
         question,
         snippet: context,
       });
