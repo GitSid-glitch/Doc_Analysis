@@ -371,12 +371,12 @@ def build_table_payload(dfs):
     tables_payload = []
     for df in dfs:
         try:
-            summary = describe_table(df)  # your eda.py
+            summary = describe_table(df)  
         except Exception as e:
             print("describe_table error:", e)
             summary = {}
 
-        # small preview of first few rows so you can inspect data itself
+        # small preview of first few rows 
         preview = {
             "columns": list(map(str, df.columns)),
             "rows": df.head(5).values.tolist(),
@@ -412,8 +412,6 @@ def upload():
     text = ""
     tables_payload = []
     chart_filenames = []
-
-    # ---- TEXT ----
     try:
         if ext == ".pdf":
             text = extract_pdf_text(filepath)
@@ -425,7 +423,6 @@ def upload():
         print("text extraction error:", e)
         text = ""
 
-    # ---- TABLES (PDF only) ----
     if ext == ".pdf":
         try:
             dfs = extract_pdf_tables(filepath)  # list of DataFrames
@@ -434,7 +431,6 @@ def upload():
             print("table extraction error:", e)
             tables_payload = []
 
-    # ---- CHARTS (PDF only) ----
     if ext == ".pdf":
         try:
             chart_paths = extract_charts(filepath, output_dir=STATIC_FOLDER)
